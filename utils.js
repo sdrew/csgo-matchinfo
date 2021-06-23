@@ -169,7 +169,7 @@ export default class CSGOMatchInfoUtils {
     this._sentry_file = this.resolvePath(this._base_path, sentry_path);
 
     if (!fs.existsSync(this._sentry_file)) {
-      this.updateSentryFile('');
+      this.sentryFileUpdate('');
     }
   }
 
