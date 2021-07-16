@@ -121,6 +121,7 @@ export default class CSGOMatchInfo extends CSGOMatchInfoHandlers {
     this._requestInfo.matchTime = null;
     this._requestInfo.demoURL = null;
     this._requestInfo.teamScores = null;
+    this._requestInfo.matchDuration = null;
     this._requestInfo.matchResult = null;
 
     if (match) {
@@ -133,6 +134,7 @@ export default class CSGOMatchInfo extends CSGOMatchInfoHandlers {
       this._requestInfo.matchTime = match.matchtime;
       this._requestInfo.demoURL = lastRound.map;
       this._requestInfo.teamScores = lastRound.team_scores;
+      this._requestInfo.matchDuration = lastRound.match_duration;
       this._requestInfo.matchResult = lastRound.match_result;
     }
 
@@ -147,7 +149,7 @@ export default class CSGOMatchInfo extends CSGOMatchInfoHandlers {
 
   profileInfoRequest() {
     this._requestCode = this._requestCodes.pop();
-    this.errorLog('=== Profile Info ===');
+    this.outputLog('=== Profile Info ===');
 
     this._csgoClient.playerProfileRequest(parseInt(this._requestCode, 10));
   }

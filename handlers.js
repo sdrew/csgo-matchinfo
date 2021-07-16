@@ -5,6 +5,7 @@ export default class CSGOMatchInfoHandlers extends CSGOMatchInfoUtils {
   bindHandlers() {
     this._steamClient
       .on('connected', this.onSteamClientConnected.bind(this))
+      .on('error', this.onSteamClientError.bind(this))
       .on('logOnResponse', this.onSteamClientLogOn.bind(this))
       .on('sentry', this.onSteamClientSentry.bind(this))
       .on('servers', this.onSteamClientServers.bind(this));
@@ -56,6 +57,11 @@ export default class CSGOMatchInfoHandlers extends CSGOMatchInfoUtils {
   onSteamClientConnected() {
     this.debugLog('Connected to Steam');
     this._steamUser.logOn(this.getAuth());
+  }
+
+  onSteamClientError(error) {
+    this.errorLog('Client Error:', error);
+    process.exit(10);
   }
 
   onSteamClientLogOn(response) {

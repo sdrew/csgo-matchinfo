@@ -1,6 +1,6 @@
 {
   "name": "csgo-matchinfo",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Fetch information for CS:GO matches",
   "main": "index.js",
   "author": "Stephen Drew",
